@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>dom operate</title>
+  <script src="../jquery-3.2.0.js"></script>
+  <script>
+    $(function () {
+      var $li1 = $("<li title='hello'> residential </li>");
+
+      $li1.removeAttr("title");
+
+
+      $li1.prependTo("ul");
+
+      $("ul li").click(function () {
+        console.log($(this).html());
+      });
+
+      var $li = $("ul li:eq(1)").remove();
+
+      $("ul").append($li);
+
+    });
+
+    $(function () {
+
+
+      var show_li = $("ul li:nth-child(odd)");
+      var li3 = $("ul li:eq(2)");
+
+      show_li.attr("class", "show");
+
+
+      if (li3.hasClass("show")) {
+        $(li3.addClass("bigger"));
+      }
+
+      $("ul").wrap("<div></div>");
+
+      $("li").wrapInner("<span></span>");
+
+      $("ul li:last-child").text("furthermore");
+
+      $("ul li:first-child").html("<em>glue</em>")
+
+    });
+
+
+    $(function () {
+
+      var address_box = $("#address");
+      var password_box = $("#password");
+
+      address_box.focus(function () {
+        var txt_value = $(this).val();
+        if (txt_value == "please input address.") {
+          $(this).val("")
+        }
+      });
+
+      address_box.blur(function () {
+        var txt_value = $(this).val();
+        if (txt_value == "") {
+          $(this).val("please input address.")
+        }
+      });
+
+      password_box.focus(function () {
+        var txt_value = $(this).val();
+        if (txt_value == this.defaultValue) {
+          $(this).val("")
+        }
+      });
+
+      password_box.blur(function () {
+        var txt_value = $(this).val();
+        if (txt_value == "") {
+          $(this).val(this.defaultValue)
+        }
+      });
+
+      var single_value = $("#single").val();
+      console.log(single_value);
+
+      var multiple_value = $("#multiple").val();
+      console.log(multiple_value);
+
+      $("#multiple").val(["intermediate", "compress"]);
+      $(":checkbox").val(["dynamic", "vision"]);
+//      $("form label input:radio").val(["bump"]);
+      $("[value = considerate]:radio").attr("checked", true);
+
+      var checkbox_value = $('input:checkbox:checked').val();
+      console.log("checkbox_value " + checkbox_value);
+
+    });
+
+    $(function () {
+
+      var $body = $("body").children();
+      console.log($body.children().children());
+      var $li = $("ul li:eq(2)");
+      var $next_li = $li.next();
+      $next_li.css("color", "red");
+
+      var $sibling_lis = $li.siblings();
+
+      var ul = $li.parents();
+
+      console.log(ul);
+      ul.css("background", "yellow")
+
+    });
+
+    $(function () {
+      var color = $("div").css("color");
+      console.log("the color of div is: " + color);
+
+      var height = $("ul").height();
+      console.log("the height of ul is: " + height);
+
+      var css_height = $("#multiple").css("height");
+      console.log("the css_height of #multiple  is: " + css_height);
+
+      var offset = $("#password").offset();
+      console.log("the offset of #password is: ");
+      console.log(offset);
+
+      var position = $("#address").position();
+      console.log("the position of #address is: ");
+      console.log(position);
+      console.log($("#address").offset());
+
+      var scroll_test = $("#scroll_test");
+
+      var scrollTop = scroll_test.scrollTop(100);
+      var scrollLeft = scroll_test.scrollLeft();
+
+      console.log("scrollTop: " + scrollTop + " scrollLeft: " + scrollLeft);
+      console.log(scrollTop)
+    })
+
+  </script>
+  <style>
+
+    body {
+      font-size: 2rem;
+    }
+
+    .show {
+      color: #7b7be7;
+    }
+
+    .bigger {
+      font-size: larger;
+    }
+
+    form, input, select {
+      font-size: 2rem;
+    }
+
+    label {
+      display: inline-block;
+      margin: 20px;
+    }
+
+  </style>
+</head>
+<body>
+
+<ul>
+  <li>decay</li>
+  <li>stagger</li>
+  <li>fruitful</li>
+</ul>
+<label for="address">address</label><input type="text" id="address" value="please input address."/>
+<label for="password">password</label><input type="text" id="password" value="please input password">
+<input type="button" value="submit">
+<label for="single">single
+  <select name="select" id="single">
+    <option>automobile</option>
+    <option>veil</option>
+    <option value="">integrity</option>
+  </select>
+</label>
+<label for="multiple">multiple
+  <select multiple="multiple" id="multiple">
+    <option selected="selected">defy</option>
+    <option>intermediate</option>
+    <option>reproduce</option>
+    <option selected="selected">compress</option>
+  </select>
+</label>
+<form action="">
+  <label>
+    <input type="checkbox" name="checkbox" value="vision">vision
+    <input type="checkbox" name="checkbox" value="leadership">leadership
+    <input type="checkbox" name="checkbox" value="dynamic">dynamic
+    <input type="checkbox" name="checkbox" value="residential">residential
+  </label>
+</form>
+<form action="">
+  <label>
+    <input type="radio" name="radio" value="considerate">considerate
+    <input type="radio" name="radio" value="insurance">insurance
+    <input type="radio" name="radio" value="bump">bump
+  </label>
+  <label for="scroll_test"></label>
+  <textarea name="scroll" id="scroll_test" cols="30" rows="10">integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity integrity </textarea>
+</form>
+</body>
+</html>
