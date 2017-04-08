@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>bubble</title>
+  <script src="../jquery-3.2.0.js"></script>
+  <script>
+    $(function () {
+      $("span").bind("click", function () {
+        var txt = $("#msg").html() + "<p> clicked inner span</p>";
+        $("#msg").html(txt);
+      });
+
+      $("#content").bind("click", function (event) {
+        var txt = $("#msg").html() + "<p> clicked outer div.</p>";
+        $("#msg").html(txt);
+        event.stopPropagation();
+      });
+
+      $("body").bind("click", function () {
+        var txt = $("#msg").html() + "<p> clicked body . </p>";
+        $("#msg").html(txt);
+      });
+    });
+
+    $(function () {
+      $("#sub").bind("click", function (event) {
+        var username = $("#username").val();
+        if (username == "") {
+          $("#message").html("<p> input box should not be empty.</p>");
+          event.preventDefault();
+        }
+      });
+
+      $("a").click(function (e) {
+        console.log(e.type);
+        return false;
+      });
+
+      $("a").hover(function (e) {
+        console.log(e.type);
+        return false;
+      });
+
+      $("a[href='http://google.com']").click(function (event) {
+        var tg = event.target;
+        console.log(tg.href);
+        return false;
+      });
+
+      $("a").mousedown(function (e) {
+        console.log(e.which);
+      });
+
+      $("input").keyup(function (e) {
+        console.log(e.which)
+      });
+    })
+
+  </script>
+  <style>
+
+    body {
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    div {
+      border: 1px solid beige;
+      width: 50%;
+      margin: 10px auto;
+    }
+
+  </style>
+</head>
+<body>
+<div id="content">
+  outer div
+  <span>inner span</span>
+  outer div
+</div>
+<div id="msg"></div>
+<form action="">
+  <label for="username"></label>username: <input type="text" id="username"/>
+  <input type="submit" value="submit" id="sub"/>
+</form>
+<div id="message"></div>
+<a href="#">hello a link </a>
+<a href="http://google.com">google com</a>
+</body>
+</html>
