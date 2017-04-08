@@ -2,9 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>promt effect</title>
+  <title>prompt effect</title>
+  <script src="../jquery-3.2.0.js"></script>
+  <script>
+    $(function () {
+      var x = 10;
+      var y = 20;
+      $("a.tooltip").mouseover(function (e) {
+
+        this.myTitle = this.title;
+        this.title = "";
+        var imgTitle = this.myTitle ? "<br/>" + this.myTitle : "";
+        var tooltip = "<div id = 'tooltip'><img src='" + this.href + "' alt ='view'/>" + imgTitle + "</div>";
+        $("body").append(tooltip);
+        $("#tooltip")
+            .css({
+              "top": (e.pageY + y) + "px",
+              "left": (e.pageX + x) + "px"
+            }).show("fast");
+        console.log(e.pageY);
+        console.log(e.pageX)
+      }).mouseout(function () {
+        this.title = this.myTitle;
+        $("#tooltip").remove();
+      }).mousemove(function (e) {
+        $("#tooltip")
+            .css({
+              "top": (e.pageY + y) + "px",
+              "left": (e.pageX + x) + "px"
+            });
+      })
+
+    })
+  </script>
+  <style>
+    ul{
+      display: flex;
+      position: absolute;
+      list-style: none;
+    }
+    
+    li{
+      position: relative;
+
+    }
+
+    div{
+      position: absolute;
+    }
+    
+  </style>
 </head>
 <body>
-
+<div>
+  <ul>
+    <li><a href="../image/1.jpg" class="tooltip" title="people"><img src="../image/1.jpg" alt="people"></a></li>
+    <li><a href="../image/dog.jpg" class="tooltip" title="dog"><img src="../image/dog.jpg" alt="dog"></a></li>
+    <li><a href="../image/monkey.png" class="tooltip" title="monkey"><img src="../image/monkey.png" alt="monkey"></a>
+    </li>
+    <li><a href="../image/penguin.jpg" class="tooltip" title="penguin"><img src="../image/penguin.jpg" alt="penguin"></a>
+    </li>
+  </ul>
+</div>
 </body>
 </html>
