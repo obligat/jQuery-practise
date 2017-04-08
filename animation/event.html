@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>event</title>
+  <script src="../jquery-3.2.0.js"></script>
+  <script>
+    $(function () {
+      $(".head").bind("click", function () {
+        var $content = $(this).next();
+        if ($content.is(":visible")) {
+          $content.hide();
+        } else {
+          $content.show();
+        }
+      });
+
+      $(".head2").bind("mouseover", function () {
+        $(this).next().show();
+      }).bind("mouseout", function () {
+        $(this).next().hide();
+      });
+
+      $(".head3").mouseover(function () {
+        $(this).next().show();
+      }).mouseout(function () {
+        $(this).next().hide();
+      });
+
+      $(".head4").hover(function () {
+
+        $(this).next().show()
+      }, function () {
+        $(this).next().hide()
+      });
+
+      $(".head5").click(function () {
+        $(this).next().toggle();
+      }, function () {
+        $(this).next().toggle();
+      });
+
+      $(".head6").hover(function () {
+        $(this).addClass("highlight");
+        $(this).next().show();
+      }, function () {
+        $(this).removeClass("highlight");
+        $(this).next().hide();
+      })
+
+    });
+  </script>
+  <style>
+    body {
+      font-size: 2rem;
+    }
+
+    div {
+      border: 1px solid beige;
+      margin: 20px auto;
+    }
+
+    .highlight {
+      background: #ff3300;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h5 class="head">demonstrate</h5>
+  <div class="content">
+    residential residential allowance allowance
+  </div>
+</div>
+<div>
+  <h5 class="head2">transportation</h5>
+  <div>
+    tolerance tolerance tolerance tolerance
+  </div>
+</div>
+<div>
+  <h5 class="head3">interpretation</h5>
+  <div>decay decay defy glue reliable cabinet cabinet</div>
+</div>
+<div>
+  <h5 class="head4">head4 recognition</h5>
+  <div>manipulate manipulate insane insane insane insane insane</div>
+</div>
+<div>
+  <h5 class="head5"> head5 underground</h5>
+  <div>withstand withstand submerge submerge underlying underlying</div>
+</div>
+<div>
+  <h5 class="head6">head6 simplify</h5>
+  <div>immune immune immune insight insight insight</div>
+</div>
+</body>
+</html>
