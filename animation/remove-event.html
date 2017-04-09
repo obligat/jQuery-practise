@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>remove event</title>
+  <script src="../jquery-3.2.0.js"></script>
+  <script>
+    $(function () {
+      $('#btn').bind("click", function () {
+        $("#test").append("<p>bind 1</p>");
+      }).bind("click", function () {
+        $("#test").append("<p>bind 2</p>");
+      }).bind("click", function () {
+        $("#test").append("<p>bind 3</p>");
+      });
+
+      $("#delAll").click(function () {
+        $("#btn").unbind("click");
+      });
+
+      $("#button").bind("click", test1 = function () {
+        $("#test").append("<p>overpass</p>");
+      }).bind("click", test2 = function () {
+        $("#test").append("<p>weave</p>")
+      }).bind("click", test3 = function () {
+        $("#test").append("<p>whistle</p>")
+      });
+
+      $("#delete").click(function () {
+        $("#button").unbind("click", test2);
+      });
+
+      $("#button").bind("test2", function () {
+        $("#test").append("<p>spite</p>")
+      });
+
+      $("#button").trigger("test2");
+    })
+  </script>
+  <style>
+    body {
+      font-size: 2rem;
+    }
+
+    button {
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+<button id="btn">click me.</button>
+<div id="test"></div>
+<button id="delAll">delete</button>
+<button id="button">alliance</button>
+<button id="delete">delete two</button>
+</body>
+</html>
