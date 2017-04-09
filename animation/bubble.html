@@ -58,12 +58,12 @@
     });
 
     $(function () {
-      $(".btn2").click().html("HELLO");
+      $(".btn2").click().html("IMITATE CLICK");
 //      $(".btn2").trigger("click").html("HELLO");
 
       var btn3 = $(".btn3");
       btn3.bind("myClick", function () {
-        $(".test").append("<p>btn3 HELLO MY CHILD .")
+        $(".test").append("<p>btn3 imitate myClick use trigger('myClick').")
       });
       btn3.trigger("myClick");
 
@@ -71,7 +71,7 @@
       btn4.bind("myClick", function (event, message1, message2) {
         $(".test").append("<p>btn4 " + message1 + message2 + "</p>")
       });
-      btn4.trigger("myClick", ["simplify by mySelf defined.", "slope"]);
+      btn4.trigger("myClick", ["message 1 by mySelf defined.", "message2"]);
 
       $("#trigger-input").trigger("focus");
 
@@ -117,7 +117,8 @@
       });
 
       $(".btn6").click(function () {
-        exeNamespace.trigger("click!");          /** don't work ? **/
+       /* exeNamespace.trigger("click!"); */         /** don't work ? **/
+       exeNamespace.trigger("click");
       })
 
 
@@ -126,9 +127,10 @@
   </script>
   <style>
 
-    body {
+    body, button, input {
       font-size: 2rem;
       cursor: pointer;
+      display: block;
     }
 
     div {
@@ -141,33 +143,37 @@
       background: skyblue;
     }
 
+    span {
+      border: 1px dashed skyblue;
+    }
+
   </style>
 </head>
 <body>
 <div id="content">
   outer div
-  <span>inner span</span>
-  outer div
+  <span>inner span. click will bubble.</span>
+  outer div . stopPropagation.
 </div>
 <div id="msg"></div>
 <form action="">
   <label for="username"></label>username: <input type="text" id="username"/>
-  <input type="submit" value="submit" id="sub"/>
+  <input type="submit" value="event.preventDefault();" id="sub"/>
 </form>
 <div id="message"></div>
-<a href="#">hello a link </a>
-<a href="http://google.com">google com</a>
+<a href="#">click and see console .</a>
+<a href="http://google.com">http://google.com</a>
 <button class="btn2">btn2</button>
 <button class="btn3">btn3</button>
 <div class="test"></div>
 <button class="btn4">btn4</button>
 <label for="trigger-input"></label>
 <input type="text" id="trigger-input">
-<div class="test-more-bind">test-more-bind alliance alliance
+<div class="test-more-bind">test-more-bind: mouseover mouseout. And look the effect.
 </div>
-<div class="test-namespace">test namespace propose propose</div>
-<button class="btn5">btn5</button>
-<div class="exe-namespace">exe-namespace whistle whistle whistle</div>
-<button class="btn6">btn6</button>
+<div class="test-namespace">test namespace : click , mouseover, dblclick . And look the effect.</div>
+<button class="btn5">btn5 CLICK ME WILL UNBIND ('.plugin')</button>
+<div class="exe-namespace">exe-namespace: test trigger("click") and trigger("click!") </div>
+<button class="btn6">btn6 CLICK ME WILL trigger("click") </button>
 </body>
 </html>
