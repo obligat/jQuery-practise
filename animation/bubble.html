@@ -19,7 +19,7 @@
 
       $("body").bind("click", function () {
         var txt = $("#msg").html() + "<p> clicked body . </p>";
-        $("#msg").html(txt);
+//        $("#msg").html(txt);
       });
     });
 
@@ -55,6 +55,72 @@
       $("input").keyup(function (e) {
         console.log(e.which)
       });
+    });
+
+    $(function () {
+      $(".btn2").click().html("HELLO");
+//      $(".btn2").trigger("click").html("HELLO");
+
+      var btn3 = $(".btn3");
+      btn3.bind("myClick", function () {
+        $(".test").append("<p>btn3 HELLO MY CHILD .")
+      });
+      btn3.trigger("myClick");
+
+      var btn4 = $(".btn4");
+      btn4.bind("myClick", function (event, message1, message2) {
+        $(".test").append("<p>btn4 " + message1 + message2 + "</p>")
+      });
+      btn4.trigger("myClick", ["simplify by mySelf defined.", "slope"]);
+
+      $("#trigger-input").trigger("focus");
+
+//      $("#trigger-input").triggerHandler("focus");
+
+    });
+
+    $(function () {
+      var div = $(".test-more-bind");
+      div.bind("mouseover mouseout", function () {
+        $(this).toggleClass("over");
+      });
+
+      /*div.bind("mouseover",function () {
+       $(this).toggleClass("over");
+       }).bind("mouseout",function () {
+       $(this).toggleClass("over");
+       })*/
+
+      var divNamespace = $(".test-namespace");
+      divNamespace.bind("click.plugin", function () {
+        $("body").append("<p>click.plugin  event</p>");
+      });
+      divNamespace.bind("mouseover.plugin", function () {
+        $("body").append("<p>mouseover.plugin event</p>")
+      });
+      divNamespace.bind("dblclick", function () {
+        $("body").append("<p>dblclick event</p>")
+      });
+      $(".btn5").click(function () {
+        divNamespace.unbind(".plugin");
+      });
+
+      var exeNamespace = $(".exe-namespace");
+      exeNamespace.bind("click", function () {
+        $("body").append("<p>exe-namespace click event . schedule");
+      });
+      exeNamespace.bind("click.plugin", function () {
+        $("body").append("<p>exe-namespace click.plugin . characteristic</p>")
+      });
+      exeNamespace.bind("mouseover",function () {
+        $(this).toggleClass("over")
+      });
+
+      $(".btn6").click(function () {
+        exeNamespace.trigger("click!");          /** don't work ? **/
+      })
+
+
     })
 
   </script>
@@ -69,6 +135,10 @@
       border: 1px solid beige;
       width: 50%;
       margin: 10px auto;
+    }
+
+    .over {
+      background: skyblue;
     }
 
   </style>
@@ -87,5 +157,17 @@
 <div id="message"></div>
 <a href="#">hello a link </a>
 <a href="http://google.com">google com</a>
+<button class="btn2">btn2</button>
+<button class="btn3">btn3</button>
+<div class="test"></div>
+<button class="btn4">btn4</button>
+<label for="trigger-input"></label>
+<input type="text" id="trigger-input">
+<div class="test-more-bind">test-more-bind alliance alliance
+</div>
+<div class="test-namespace">test namespace propose propose</div>
+<button class="btn5">btn5</button>
+<div class="exe-namespace">exe-namespace whistle whistle whistle</div>
+<button class="btn6">btn6</button>
 </body>
 </html>
