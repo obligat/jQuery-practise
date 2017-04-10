@@ -42,6 +42,7 @@
 
       select2.dblclick(function () {
         var options = $("option:selected", this);
+        alert(this);
         options.appendTo("#select1");
       });
 
