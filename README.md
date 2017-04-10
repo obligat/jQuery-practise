@@ -5,3 +5,7 @@
 3. event and animation
     * [bubble](https://obligat.github.io/jQuery-practise/animation/bubble.html)
     * [event](https://obligat.github.io/jQuery-practise/animation/event.html)
+4. form 
+    * [checkbox](https://obligat.github.io/jQuery-practise/form/checkbox.html)
+    * [textarea](https://obligat.github.io/jQuery-practise/form/textarea.html)
+    * [selectDown](https://obligat.github.io/jQuery-practise/form/selectDown.html)
