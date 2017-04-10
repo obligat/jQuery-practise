@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>checkbox all or all not</title>
+  <script src="../jquery-3.2.0.js"></script>
+  <script>
+    $(function () {
+      var $checkAll = $("#checkedAll");
+      var checkbox = $("[name = items]:checkbox");
+      $checkAll.click(function () {
+        checkbox.prop("checked", this.checked);
+      });
+      checkbox.click(function () {
+        var flag = true;
+        checkbox.each(function () {
+          if (!this.checked) {
+            flag = false;
+          }
+        });
+        $checkAll.prop("checked", flag);
+      })
+    });
+
+    $(function () {
+      var $checkAll2 = $("#checkedAll2");
+      var checkbox2 = $("[name = item2]:checkbox");
+      $checkAll2.click(function () {
+//        console.log($(this).prop("checked"));
+        if (this.checked) {
+          checkbox2.prop("checked", true);
+        } else {
+          checkbox2.prop("checked", false);
+        }
+      });
+      checkbox2.click(function () {
+        var $tmp = $("[name = item2]:checkbox");
+        console.log($tmp.filter(":checked"));
+        $checkAll2.prop("checked", $tmp.length == $tmp.filter(":checked").length);
+        console.log($checkAll2.prop("checked"));
+      })
+    })
+  </script>
+  <style>
+    input, body {
+      font-size: 1.5rem;
+    }
+
+    form {
+      border: 1px solid blueviolet;
+      width: 60%;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+<form action="">
+  What's your lovely words ?
+  <input type="checkbox" id="checkedAll">checkAll/checkNone<br/>
+  <input type="checkbox" name="items" value="barrier">barrier
+  <input type="checkbox" name="items" value="curve">curve
+  <input type="checkbox" name="items" value="cherish">cherish
+  <input type="checkbox" name="items" value="considerate">considerate
+  <input type="checkbox" name="items" value="cease">cease<br>
+  <input type="button" id="send" value="submit">
+</form>
+<form action="">
+  What's your lovely words ?
+  <input type="checkbox" id="checkedAll2">checkAll/checkNone<br/>
+  <input type="checkbox" name="item2" value="barrier">barrier
+  <input type="checkbox" name="item2" value="curve">curve
+  <input type="checkbox" name="item2" value="cherish">cherish
+  <input type="checkbox" name="item2" value="considerate">considerate
+  <input type="checkbox" name="item2" value="cease">cease<br>
+  <input type="button" id="send2" value="submit">
+</form>
+</body>
+</html>
