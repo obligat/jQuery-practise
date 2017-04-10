@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>multiply textarea</title>
+  <script src="../jquery-3.2.0.js"></script>
+  <script>
+    $(function () {
+      var $comment = $("#comment");
+      $(".bigger").click(function () {
+        if ($comment.height() < 400) {
+//          $comment.height($comment.height() + 50);
+          if (!$comment.is(":animated")) {
+            $comment.animate({height: "+=100"}, 1000);
+          }
+
+        }
+      });
+
+      $(".smaller").click(function () {
+        if ($comment.height() > 100) {
+//          $comment.height($comment.height() - 50);
+          if (!$comment.is(":animated")) {
+            $comment.animate({height: "-=50"}, 400);
+          }
+        }
+      });
+    });
+
+    $(function () {
+      var $comment = $("#comment2");
+      $(".up").click(function () {
+        if (!$comment.is(":animated")) {
+          $comment.animate({scrollTop: "-=50"}, 400);
+        }
+      });
+      $(".down").click(function () {
+        if (!$comment.is(":animated")) {
+          $comment.animate({scrollTop: "+=50"}, 400);
+        }
+      })
+    })
+  </script>
+  <style>
+    .msg {
+      width: 60%;
+      margin: 40px auto;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+
+    span {
+      background: burlywood;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+<form action="">
+  <div class="msg">
+    <div class="msg_caption">
+      <span class="bigger">bigger</span>
+      <span class="smaller">smaller</span>
+    </div>
+    <textarea name="textarea" id="comment" cols="30" rows="10">
+      These days most people in Britain and the USA do not wear very former clothes,but sometimes it is important to wear right thing.
+      Many British people do not think about clothes very much. They just like to be comfortable.
+      When they go out to enjoy themselvies they can wear almost anything.At theaters, movie houses and concerts you can put on what you like,
+      from elegant suits and dresses to jeans and sweaters.
+    </textarea>
+  </div>
+</form>
+<form action="">
+  <div class="msg">
+    <div class="msg_caption">
+      <span class="up">up</span>
+      <span class="down">down</span>
+    </div>
+    <textarea name="textarea" id="comment2" cols="30" rows="10">
+      These days most people in Britain and the USA do not wear very former clothes,but sometimes it is important to wear right thing.
+      Many British people do not think about clothes very much. They just like to be comfortable.
+      When they go out to enjoy themselvies they can wear almost anything.At theaters, movie houses and concerts you can put on what you like,
+      from elegant suits and dresses to jeans and sweaters.
+    </textarea>
+  </div>
+</form>
+
+</body>
+</html>
