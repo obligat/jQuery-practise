@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>table style</title>
+  <script src="../jquery-3.2.0.js"></script>
+  <script>
+    $(function () {
+      $("#tbody1 > tr:odd").addClass("odd");
+      $("#tbody1 > tr:even").addClass("even");
+//      $("tr:contains('peculiar')").addClass("selected");
+
+      $("#tbody1 > tr").click(function () {
+        $(this)
+            .addClass("selected").siblings().removeClass("selected")
+            .end()
+            .find(":radio").prop("checked", true);
+      });
+
+//      $("tbody :radio:checked").parents("tr").addClass("selected");
+//      $("tbody :radio:checked").parent().parent().addClass("selected");
+      $("#tbody1 > tr:has(:checked)").addClass("selected");
+    });
+
+    $(function () {
+      $("#table2 > tbody > tr:has(:checked)").addClass("selected");
+      $("#table2 > tbody > tr").click(function () {
+        /*   if ($(this).hasClass("selected")) {
+         $(this).removeClass("selected")
+         .find(":checkbox").attr("checked", false);
+         } else {
+         $(this).addClass("selected")
+         .find(":checkbox").attr("checked", true);
+         }*/
+
+        var hasSelected = $(this).hasClass("selected");
+        $(this)[hasSelected ? "removeClass" : "addClass"]("selected")
+            .find(":checkbox").attr("checked", !hasSelected);
+      });
+    });
+
+    $(function () {
+      /*  $("tr.parent").click(function () {
+       $(this).toggleClass("selected")
+       .siblings(".child_" + this.id).toggle();
+       }); */
+      $("tr.parent").click(function () {
+        $(this).toggleClass("selected")
+            .siblings(".child_" + this.id).slideToggle();
+      }).click();
+    });
+
+    $(function () {
+      $("#filter").keyup(function () {
+        $("#table4 tbody tr").hide()
+            .filter(":contains('" + ($(this).val()) + "')").show();
+        console.log("#table4 tbody tr");
+        console.log($("#table4 tbody tr"));
+      }).keyup();
+    })
+
+  </script>
+  <style>
+
+    body {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    table {
+      line-height: 45px;
+      border: 1px solid black;
+      cursor: pointer;
+      border-collapse: collapse;
+      margin: 20px;
+    }
+
+    td, th, input {
+      font-size: 2rem;
+    }
+
+    .even {
+      background: #fff38f;
+    }
+
+    .odd {
+      background: #ffffee;
+    }
+
+    .selected {
+      background: #86e5e7;
+    }
+
+    .parent {
+      background: #e7c99a;
+    }
+
+  </style>
+</head>
+<body>
+<table>
+  <thead>
+  <tr>
+    <th></th>
+    <th>anchor</th>
+    <th>antique</th>
+    <th>architect</th>
+  </tr>
+  </thead>
+  <tbody id="tbody1">
+  <tr>
+    <td><input name="radio" type="radio"></td>
+    <td>gratitude</td>
+    <td>multiple</td>
+    <td>liberate</td>
+  </tr>
+  <tr>
+    <td><input name="radio" type="radio"></td>
+    <td>stimulate</td>
+    <td>significance</td>
+    <td>container</td>
+  </tr>
+  <tr>
+    <td><input name="radio" type="radio"></td>
+    <td>shrink</td>
+    <td>cashier</td>
+    <td>proof</td>
+  </tr>
+  <tr>
+    <td><input name="radio" type="radio"></td>
+    <td>gratitude</td>
+    <td>multiple</td>
+    <td>liberate</td>
+  </tr>
+  <tr>
+    <td><input name="radio" type="radio" checked></td>
+    <td>stimulate</td>
+    <td>significance</td>
+    <td>container</td>
+  </tr>
+  <tr>
+    <td><input name="radio" type="radio"></td>
+    <td>shrink</td>
+    <td>peculiar</td>
+    <td>proof</td>
+  </tr>
+  <tr>
+    <td><input name="radio" type="radio"></td>
+    <td>gratitude</td>
+    <td>multiple</td>
+    <td>liberate</td>
+  </tr>
+  <tr>
+    <td><input name="radio" type="radio"></td>
+    <td>stimulate</td>
+    <td>significance</td>
+    <td>container</td>
+  </tr>
+  <tr>
+    <td><input type="radio"></td>
+    <td>shrink</td>
+    <td>learned</td>
+    <td>proof</td>
+  </tr>
+  </tbody>
+</table>
+<table id="table2">
+  <thead>
+  <tr>
+    <th></th>
+    <th>anchor</th>
+    <th>antique</th>
+    <th>architect</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><input name="checkbox" type="checkbox"></td>
+    <td>gratitude</td>
+    <td>multiple</td>
+    <td>liberate</td>
+  </tr>
+  <tr>
+    <td><input name="checkbox" type="checkbox"></td>
+    <td>stimulate</td>
+    <td>significance</td>
+    <td>container</td>
+  </tr>
+  <tr>
+    <td><input name="checkbox" type="checkbox"></td>
+    <td>shrink</td>
+    <td>cashier</td>
+    <td>proof</td>
+  </tr>
+  <tr>
+    <td><input name="checkbox" type="checkbox"></td>
+    <td>gratitude</td>
+    <td>multiple</td>
+    <td>liberate</td>
+  </tr>
+  <tr>
+    <td><input name="checkbox" type="checkbox" checked></td>
+    <td>stimulate</td>
+    <td>significance</td>
+    <td>container</td>
+  </tr>
+  <tr>
+    <td><input name="checkbox" type="checkbox"></td>
+    <td>shrink</td>
+    <td>peculiar</td>
+    <td>proof</td>
+  </tr>
+  <tr>
+    <td><input name="checkbox" type="checkbox"></td>
+    <td>gratitude</td>
+    <td>multiple</td>
+    <td>liberate</td>
+  </tr>
+  <tr>
+    <td><input name="checkbox" type="checkbox"></td>
+    <td>stimulate</td>
+    <td>significance</td>
+    <td>container</td>
+  </tr>
+  <tr>
+    <td><input type="checkbox"></td>
+    <td>shrink</td>
+    <td>learned</td>
+    <td>proof</td>
+  </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+  <tr>
+    <th>anchor</th>
+    <th>antique</th>
+    <th>architect</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="parent" id="row_01">
+    <td colspan="3">this is shrink one .</td>
+  </tr>
+  <tr class="child_row_01">
+    <td>gratitude</td>
+    <td>multiple</td>
+    <td>liberate</td>
+  </tr>
+  <tr class="child_row_01">
+    <td>stimulate</td>
+    <td>significance</td>
+    <td>container</td>
+  </tr>
+  <tr class="child_row_01">
+    <td>shrink</td>
+    <td>cashier</td>
+    <td>proof</td>
+  </tr>
+  <tr class="child_row_01">
+    <td>gratitude</td>
+    <td>multiple</td>
+    <td>liberate</td>
+  </tr>
+  <tr class="parent" id="row_02">
+    <td colspan="3">this is shrink two .</td>
+  </tr>
+  <tr class="child_row_02">
+    <td>stimulate</td>
+    <td>significance</td>
+    <td>container</td>
+  </tr>
+  <tr class="child_row_02">
+    <td>shrink</td>
+    <td>peculiar</td>
+    <td>proof</td>
+  </tr>
+  <tr class="child_row_02">
+    <td>gratitude</td>
+    <td>multiple</td>
+    <td>liberate</td>
+  </tr>
+  <tr class="parent" id="row_03">
+    <td colspan="3">this is shrink three .</td>
+  </tr>
+  <tr class="child_row_03">
+    <td>stimulate</td>
+    <td>significance</td>
+    <td>container</td>
+  </tr>
+  <tr class="child_row_03">
+    <td>shrink</td>
+    <td>learned</td>
+    <td>proof</td>
+  </tr>
+  </tbody>
+</table>
+<table id="table4">
+  <thead>
+  <tr>
+    <th>name</th>
+    <th>gender</th>
+    <th>address</th>
+  </tr>
+  <tr><td colspan="3"><label for="filter">filter</label><input type="text" id="filter"></td></tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>exhibit</td>
+    <td>proof</td>
+    <td>liberty</td>
+  </tr>
+  <tr>
+    <td>fuss</td>
+    <td>scholar</td>
+    <td>therapy</td>
+  </tr>
+  <tr>
+    <td>cashier</td>
+    <td>browse</td>
+    <td>exert</td>
+  </tr>
+  <tr>
+    <td>therapy</td>
+    <td>fare</td>
+    <td>fatal</td>
+  </tr>
+  <tr>
+    <td>deadly</td>
+    <td>refusal</td>
+    <td>casual</td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
