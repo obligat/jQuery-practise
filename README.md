@@ -9,3 +9,4 @@
     * [checkbox](https://obligat.github.io/jQuery-practise/form/checkbox.html)
     * [textarea](https://obligat.github.io/jQuery-practise/form/textarea.html)
     * [selectDown](https://obligat.github.io/jQuery-practise/form/selectDown.html)
+    * [table](https://obligat.github.io/jQuery-practise/form/table.html)
