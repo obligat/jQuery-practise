@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: rgba(129, 175, 204, 0.3);
+    min-width: 600px;
+}
+
+.container {
+    max-width: 500px;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #27B6CC;
+}
+
+input[type=text], input[type=date], button {
+    outline: none;
+    margin: 0 5px;
+    padding: 0 5px;
+    border-radius: 3px;
+    border: 0;
+    line-height: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.checkbox {
+    display: none;
+}
+
+.checkbox-alias {
+    margin: auto 5px;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #FFFFFF;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0px 0px 2px rgba(0, 0, 0, 0.3);
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.checkbox:checked + .checkbox-alias:after {
+    content: '';
+    background: #27b6cc;
+    width: 12px;
+    height: 12px;
+    margin: 2px;
+    display: inline-block;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+input[type=text]:hover, input[type=date]:hover,
+input[type=text]:focus, input[type=date]:focus {
+    background: #FFFFFF;
+    -webkit-box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: rgba(39, 182, 204, 0.8);
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+button {
+    background: #27b6cc;
+    color: #fff;
+}
+
+.task-add, .task {
+    width: 100%;
+    display: flex;
+}
+
+.task-add > input {
+    flex: 4;
+}
+
+.task-add > button {
+    flex: 1;
+}
+
+.task {
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.task-item {
+    /*    display: flex;
+        align-items: center;*/
+    margin: 0 5px 2px 5px;
+    line-height: 40px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    -webkit-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
+    -webkit-transition: background -1s;
+    -moz-transition: background -1s;
+    -ms-transition: background -1s;
+    -o-transition: background -1s;
+    transition: background -1s;
+}
+
+.task-item:hover {
+    background: #dddddd;
+}
+
+.remind {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.remind > input {
+    width: 365px;
+}
+
+.remind > button {
+    width: 100px;
+}

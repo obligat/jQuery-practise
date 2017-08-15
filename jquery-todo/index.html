@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery todo</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+            integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+            crossorigin="anonymous"></script>
+    <script src="./js/base.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>todo list</h1>
+    <div class="task-add">
+        <input type="text"/>
+        <button>submit</button>
+    </div>
+    <ul class="task">
+        <li class="task-item">
+            <label>
+                <input type="checkbox" name="checkbox" class="checkbox">
+                <span class="checkbox-alias"></span>
+            </label>
+            <span class="item-text">lll </span>
+            <span>delete</span>
+            <span class="item-detail">detail</span>
+        </li>
+        <li class="task-item">
+            <label><input type="checkbox" name="checkbox" class="checkbox"><span class="checkbox-alias"></span></label>
+            <span class="item-text">lll </span>
+            <span>delete</span>
+            <span class="item-detail">detail</span>
+        </li>
+        <li class="task-item">
+            <label><input type="checkbox" name="checkbox" class="checkbox"><span class="checkbox-alias"></span></label>
+            <span class="item-text">lll </span>
+            <span>delete</span>
+            <span class="item-detail">detail</span>
+        </li>
+    </ul>
+    <div class="task-detail">
+        <div class="content"></div>
+        <div>
+            <div class="remark">
+
+            </div>
+        </div>
+        <div class="remind">
+            <input type="date"/>
+            <button>submit</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
